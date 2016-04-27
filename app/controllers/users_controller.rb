@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
   include SessionsHelper
-  before_action :set_message, only: [:show,:edit, :update]
+  before_action :correct_user, only: [:edit, :update]
 
   
-  def show # 追加
+  def show # 
+    @user = User.find(params[:id])
   end
   
   def new
@@ -44,5 +45,10 @@ class UsersController < ApplicationController
   def set_message
     @user = User.find(params[:id])
   end  
+  
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to root_path if @user != current_user
+  end
   
 end

@@ -5,18 +5,10 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@user) do |f| %>
-
-      <%= f.label :name %>
-      <%= f.text_field :name, :readonly => true %>
-
-      <%= f.label :email %>
-      <%= f.text_field :email, :readonly => true %>
-
-      <%= f.label :location %>
-      <%= f.text_field :location, :readonly => true %>
-
-    <% end %>
+    <ul>
+      <li>Name     :<%= @user.name %></li>
+      <li>Email    :<%= @user.email %></li>
+      <li>Location :<%= @user.location %></li>
+    </ul>  
   </div>
-</div>  
-
+</div>
