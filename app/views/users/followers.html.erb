@@ -1,0 +1,7 @@
+<% if @followings.any? %>
+  <h3>@followers(<%= @@followers.count %>)</h3>
+  <% @@followers.each do |user| %>
+   <%= link_to user.name, user %>
+   <br>
+  <% end %>
+<% end %>

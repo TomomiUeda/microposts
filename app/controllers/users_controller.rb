@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   include SessionsHelper
   before_action :correct_user, only: [:edit, :update]
+  before_action :logged_in_user
 
-  
   def show # 
     @user = User.find(params[:id])
     @microposts = @user.microposts.order(created_at: :desc)
@@ -35,6 +35,16 @@ class UsersController < ApplicationController
       render 'edit'
     end
   end
+  
+  def followings
+    @user = User.find(params[:id])
+    @followings = @user.following_users
+  end  
+
+  def followers
+    @user = User.find(params[:id])
+    @followers = @user.follower_users
+  end  
 
   private
 
